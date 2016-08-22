@@ -1,6 +1,6 @@
 {
   "name": "ts-immutable-record",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Immutable Record types for TypeScript. Designed to be compatible with Immutable, but with type-safety",
   "license": "MIT",
   "author": "Tim Ruffles <timrruffles@googlemail.com> (http://truffles.me.uk)",
