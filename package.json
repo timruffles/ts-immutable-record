@@ -8,7 +8,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "mocha -r ts-node/register test.ts",
+    "test": "mocha -r ts-node/register test.ts &&  npm run prepublish && node testReadme.js",
     "prepublish": "tsc index.ts --outdir built && mv built/index.js ts-immutable-record.js"
   },
   "files": [

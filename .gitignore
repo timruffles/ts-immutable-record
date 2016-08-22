@@ -2,4 +2,6 @@
 npm-debug.log
 ts-immutable-record.js
 testTarget
+Record.ts
+Person.ts
 built

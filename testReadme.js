@@ -1,26 +1,5 @@
-# Immutable Records for Typescript
-
-[![Build Status](https://travis-ci.org/timruffles/ts-immutable-record.svg?branch=master)](https://travis-ci.org/timruffles/ts-immutable-record)
-
-Typed Immutable records for TypeScript are a pain. Via code-generation, this module gives you the best of using plain objects - type-safety - with the value semantics you'll want to make efficient use of immutable data.
-
-Currently there is no run-time prevention of mutation - if you fancy this, just `Object.freeze` the instances.
-
-## Installation
-
-```sh
-npm install --save ts-immutable-record
-```
-
-## Usage
-
-This module works via code-generation, to enable type-safety through sufficiently granular typings.
-
-Here's an example of the runtime APIs, running in ES6:
-
-```javascript
-const createRecord = require("ts-immutable-record");
-onst fs = require("fs");
+const createRecord = require("./ts-immutable-record");
+const fs = require("fs");
 const assert = require("assert");
 
 require("ts-node/register");
@@ -82,5 +61,4 @@ const amy5 = amy4.derive({ job: Map({ title: "CEO"}) });
 
 assert(!amy4.is(amy2), "equality respects .equals methods of properties");
 assert(amy5.is(amy2), "updating non-scalar values with .equals still reflects value semantic");
-```
 

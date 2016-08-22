@@ -48,12 +48,12 @@ export default class ${ prepared.name }${ prepared.generics } {
 	}
 
 	derive(update: Update${ prepared.generics }): ${ prepared.name }${ prepared.generics } {
-		const get = f => f in update ? update[f] : this[f];
+		const get = (f: string) => f in update ? (<any>update)[f] : (<any>this)[f];
 
 		let empty = true;
 		for(const p in update) {
-			const v = update[p];
-			if(!is(this[p], v)) {
+			const v = (<any>update)[p];
+			if(!is((<any>this)[p], v)) {
 				empty = false;
 				break;
 			}
@@ -74,7 +74,7 @@ export default class ${ prepared.name }${ prepared.generics } {
 		if(!(other instanceof ${ prepared.name })) {
 			return false;
 		} else {
-			return fields.every(f => is(this[f], other[f]));
+			return fields.every(f => is((<any>this)[f], (<any>other)[f]));
 		}
 	}
 
@@ -89,7 +89,8 @@ export default class ${ prepared.name }${ prepared.generics } {
 
 // if we're importing is to save space
 function getIs() {
-	return `function is(valueA, valueB) {
+	return `
+function is(valueA: any, valueB: any) {
   if (valueA === valueB || (valueA !== valueA && valueB !== valueB)) {
     return true;
   }
