@@ -1,0 +1,5 @@
+/coverage
+npm-debug.log
+ts-immutable-record.js
+testTarget
+built
