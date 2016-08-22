@@ -16,6 +16,59 @@ npm install --save ts-immutable-record
 
 This module works via code-generation, to enable type-safety through sufficiently granular typings.
 
+Calling generate with:
+
+```javascript
+const sourceCode = createRecord({
+  name: "Person",
+  generics: [`Job`],
+  fields: [
+    {
+      name: "name",
+      type: "string",
+    },
+    {
+      name: "age",
+      type: "number",
+    },
+    {
+      name: "job",
+      type: "Job",
+    },
+  ],
+});
+```
+
+Will result in TypeScript source code that fulfills the below interface. As you can see, this also supports generating records with generics.
+
+```typescript
+export default class Person<Job> {
+	new (
+		public name: string,
+		public age: number,
+		public job: Job
+	): Person;
+
+  // returns a Person value with 0 .. many of the fields
+  // differing to the current instance, with the rest using
+  // the current instance's values. Will be `===` the original
+  // if all values are equal to original values.
+	derive(update: Update<Job>): Person<Job>;
+
+  // two methods implementing value semantics
+	equals(other: Person<{}>): boolean;
+	is(other: Person<{}>): boolean;
+};
+
+export interface Update<Job> {
+	name?: string
+	age?: number
+	job?: Job
+}
+```
+
+### Runtime behaviour
+
 Here's an example of the runtime APIs, running in ES6:
 
 ```javascript
