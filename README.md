@@ -6,6 +6,8 @@ Typed Immutable records for TypeScript are a pain. Via code-generation, this mod
 
 Currently there is no run-time prevention of mutation - if you fancy this, just `Object.freeze` the instances.
 
+`.equals` and `.is` methods will ensure your comparisons follow value semantics: if all the values of two instances are indentical, the instances should be considered indentical.
+
 ## Installation
 
 ```sh
