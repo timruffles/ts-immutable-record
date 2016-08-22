@@ -76,7 +76,6 @@ const createRecord = require("ts-immutable-record");
 onst fs = require("fs");
 const assert = require("assert");
 
-require("ts-node/register");
 
 const sourceCode = createRecord({
   name: "Person",
@@ -99,8 +98,13 @@ const sourceCode = createRecord({
 
 fs.writeFileSync("./Person.ts", sourceCode, { encoding: "utf8" });
 
+// allow us to require Typescript files, compiled on demand
+require("ts-node/register");
+
+// generated code targets TS, so uses ES6 exports
 const Person = require("./Person").default;
 
+// stub version of Immutable's Map for this demo
 class StubImmutableMap extends global.Map {
 	// simple
 	equals(m2) {
