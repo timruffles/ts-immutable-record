@@ -6,7 +6,7 @@ import { writeFileSync } from "fs";
 describe("immutable records, core API", function() {
 
   // compiling takes a while
-  this.timeout(3500);
+  this.timeout(5000);
 
   let TestRecord: any;
 
