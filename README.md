@@ -49,13 +49,13 @@ export default class Person<Job> {
 		public job: Job
 	): Person;
 
-  // returns a Person value with 0 .. many of the fields
-  // differing to the current instance, with the rest using
-  // the current instance's values. Will be `===` the original
-  // if all values are equal to original values.
+	// returns a Person value with 0 .. many of the fields
+	// differing to the current instance, with the rest using
+	// the current instance's values. Will be `===` the original
+	// if all values are equal to original values.
 	derive(update: Update<Job>): Person<Job>;
 
-  // two methods implementing value semantics
+	// two methods implementing value semantics
 	equals(other: Person<{}>): boolean;
 	is(other: Person<{}>): boolean;
 };
